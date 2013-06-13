@@ -49,6 +49,23 @@ GET /spots/description/{id}/
    Several paragraphs in light HTML markup 
 </p>
 
+GET /spots/events/{id}/{?from,till}
+> Accept: application/json
+> If-Modified-Since: Mon, 3 Jun 2013 00:00:00 GMT
+< 200
+< Content-Type: application/json
+[    
+    {
+        "ID": 1,
+        "name": "Orient Jumping Event",
+        "from": 2013-06-06,
+        "till": 2013-07-07,
+        "spots": [1, 5, 38],
+        "sports": ["skydiving", "wakeboarding"],
+        "users": [3, 48, 172],
+    }
+]
+
 POST /spots/
 > Content-Type: application/json
 > Accept: application/json
@@ -70,3 +87,32 @@ POST /spots/
 < 200
 < Content-Type: application/json
 { "ID": 42 }
+
+-- 
+Эвенты
+--
+GET /events/{id}
+> Accept: application/json
+> If-Modified-Since: Mon, 3 Jun 2013 00:00:00 GMT
+< 200
+< Content-Type: application/json
+{
+    "ID": 1,
+    "name": "Orient Jumping Event",
+    "from": 2013-06-06,
+    "till": 2013-07-07,
+    "spots": [1, 5, 38],
+    "sports": ["skydiving", "wakeboarding"],
+    "users": [3, 48, 172],
+}
+
+GET /events/description/{id}/
+> Accept: text/html
+> If-Modified-Since: Mon, 3 Jun 2013 00:00:00 GMT
+< 304
++++++
+< 200
+< Content-Type: text/html
+<p>
+   Several paragraphs in light HTML markup 
+</p>
