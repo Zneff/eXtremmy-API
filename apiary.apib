@@ -133,3 +133,21 @@ GET /events/description/{id}/
 <p>
    Several paragraphs in light HTML markup 
 </p>
+
+
+GET /events/comments/{id}{?limit,offset}
+> Accept: application/json
+> If-Modified-Since: Mon, 3 Jun 2013 00:00:00 GMT
+< 200
+< Content-Type: application/json
+[
+    {
+        "ID": 1,
+        "text": "Orient Jumping Event",
+        "created": "2013-06-06",
+        "author": {
+            "ID": 1, 
+            "username":"UserName"
+            },
+    }
+]
