@@ -151,3 +151,21 @@ GET /events/comments/{id}{?limit,offset}
             },
     }
 ]
+
+-- 
+Пользователи
+--
+POST /users/authenticate
+> Accept: application/json
+{ 
+    "username": "UserName", 
+    "password": "Password",
+    "device_uid": "Device-Unique-Id",
+    "device_os": "1"
+}
+< 200
+< Content-Type: application/json
+{
+    "status": "ok",
+    "key": "Mobile-Api-Key",
+}
