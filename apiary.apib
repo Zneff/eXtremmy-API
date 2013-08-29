@@ -105,13 +105,15 @@ POST /spots/
 < Content-Type: application/json
 { "ID": 42 }
 
-Add comment to spot
-POST /spots/AddComment/{id}
+Add comment to spot. Parameters:
+
++ <b>text</b> - message text, required
++ <b>[replyTo]</b> - parent comment ID
+POST /spots/AddComment/{spotId}
 > Authorization: apikey:XXX
 > Content-Type: application/json
 > Accept: application/json
-replyTo: 1
-text: "Comment text"
+replyTo=1&text=Message
 < 401
 < Content-Type: application/json
 { 
