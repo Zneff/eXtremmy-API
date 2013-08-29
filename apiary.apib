@@ -105,6 +105,25 @@ POST /spots/
 < Content-Type: application/json
 { "ID": 42 }
 
+Add comment to spot
+POST /spots/AddComment/{id}
+> Authorization: apikey:XXX
+> Content-Type: application/json
+> Accept: application/json
+replyTo: 1
+text: "Comment text"
+< 401
+< Content-Type: application/json
+{ 
+    "error": 401,
+    "message": "Unauthorized user trying to add comment.",
+    "userMessage": "Please sign in."   
+}
++++++
+< 200
+< Content-Type: application/json
+{ "status": "ok" }
+
 -- 
 Эвенты
 --
