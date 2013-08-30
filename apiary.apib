@@ -242,17 +242,26 @@ POST /users/register
 < Content-Type: application/json
 { "status": "ok" }
 
+
+Authenticate user. Parameters:
+
++ <b>username</b> - user name, string, required
++ <b>password</b> - user password, string, required
++ <b>device_uid</b> - user device unical id, string, required
++ <b>device_os</b> - user device os, int, required (1 - iOs, 2 - Android, 3 - Windows Phone)
 POST /users/authenticate
 > Accept: application/json
-{ 
-    "username": "UserName", 
-    "password": "Password",
-    "device_uid": "Device-Unique-Id",
-    "device_os": "1"
-}
+username=UserName&password=Password&device_uid=Device-Unique-Id&device_os=1
 < 200
 < Content-Type: application/json
 {
-    "status": "ok",
-    "key": "Mobile-Api-Key",
+    "status":"ok",
+    "data": {
+        "key":"0175D3FE-1FD3-0377-1A7B-E9DE26A56E79",
+        "user": {
+            "ID":2,
+            "username":"Zneff",
+            "avatar":"9D0AD67D-8C1D-C816-CCCF-514D76EC811C.2.jpg"
+        }
+    }
 }
