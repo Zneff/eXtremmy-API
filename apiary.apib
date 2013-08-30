@@ -257,11 +257,25 @@ username=UserName&password=Password&device_uid=Device-Unique-Id&device_os=1
 {
     "status":"ok",
     "data": {
-        "key":"0175D3FE-1FD3-0377-1A7B-E9DE26A56E79",
+        "key":"Mobile-Api-Key",
         "user": {
             "ID":2,
-            "username":"Zneff",
-            "avatar":"9D0AD67D-8C1D-C816-CCCF-514D76EC811C.2.jpg"
+            "username":"Username",
+            "avatar":"Avatar-File.jpg"
         }
+    }
+}
++++++
+< 400
+< Content-Type: application/json
+{
+    "error":400,
+    "message":"Validation error.",
+    "userMessage":"Validation error.",
+    "field":{
+        "username":["Username or e-mail cannot be blank."],
+        "password":["Password cannot be blank."],
+        "device_uid":["Device Uid cannot be blank."],
+        "device_os":["Device Os cannot be blank."]
     }
 }
