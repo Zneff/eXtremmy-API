@@ -107,19 +107,23 @@ POST /spots/
 
 Add comment to spot. Parameters:
 
++ <b>spot_id</b> - spot id, required
 + <b>text</b> - message text, required
-+ <b>[replyTo]</b> - parent comment ID
-POST /spots/AddComment/{spotId}
++ <b>[parent_id]</b> - parent comment ID
+POST /spots/addComment
 > Authorization: apikey:XXX
 > Content-Type: application/json
 > Accept: application/json
-replyTo=1&text=Message
-< 401
+spot_id=1&parent_id=2&text=Message
+< 400
 < Content-Type: application/json
 { 
-    "error": 401,
-    "message": "Unauthorized user trying to add comment.",
-    "userMessage": "Please sign in."   
+    "error": 400,
+    "message": "Validation error.",
+    "userMessage": "Validation error." 
+    "field": {
+            "text": ["Text cannot be blank."]
+            }
 }
 +++++
 < 200
@@ -206,8 +210,38 @@ GET /events/comments/{id}{?limit,offset}
 ]
 
 -- 
-Пользователи
+Users
 --
+
+Register new user. Parameters:
+
++ <b>username</b> - user name, string, required
++ <b>email</b> - user email, string, required
++ <b>password</b> - user password, string, required
++ <b>[sports]</b> - user sports, array of int
++ <b>[country_id]</b> - user country code, string, format: RU
++ <b>[city]</b> - user city, string
++ <b>[birthday]</b> - user birthday, string, format: YYYY-MM-DD
+POST /users/register
+> Content-Type: application/json
+> Accept: application/json
+< 400
+< Content-Type: application/json
+{ 
+    "error": 400,
+    "message": "Validation error.",
+    "userMessage": "Validation error." 
+    "field": {
+        "username":["Username cannot be blank."],
+        "email":["E-mail cannot be blank."],
+        "password":["Password cannot be blank."]
+        }
+}
++++++
+< 200
+< Content-Type: application/json
+{ "status": "ok" }
+
 POST /users/authenticate
 > Accept: application/json
 { 
