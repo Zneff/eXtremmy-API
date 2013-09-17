@@ -105,6 +105,44 @@ POST /spots/
 < Content-Type: application/json
 { "ID": 42 }
 
+Add spot. Parameters:
+
++ <b>name</b> - spot name, required
++ <b>lat</b> - spot latitude, required
++ <b>lng</b> - spot longtitude, required
++ <b>sport</b> - sports, array, required
++ <b>[description]</b> - spot description, text
++ <b>[url]</b> - spot website url
++ <b>[has_rent]</b> - if spot has rent service, bool
++ <b>[has_rooms]</b> - if spot has rooms service, bool
++ <b>[has_lessons]</b> - if spot has lessons service, bool
++ <b>[address]</b> - adress (from geolocation)
++ <b>[country]</b> - country (from geolocation)
+POST /spots/add
+> Authorization: apikey:XXX
+> Content-Type: application/json
+> Accept: application/json
+name=spotName&lat=12.123123&lng=-11.124214124&sport[]=1&sport[]=3
+< 400
+< Content-Type: application/json
+{ 
+    "error": 400,
+    "message": "Validation error.",
+    "userMessage": "Validation error." 
+    "field": {
+            "name": ["Name cannot be blank."]
+            }
+}
++++++
+< 200
+< Content-Type: application/json
+{ 
+    "status": "ok",
+    "data": {
+        "id": 1
+    }
+}
+
 Add comment to spot. Parameters:
 
 + <b>spot_id</b> - spot id, required
