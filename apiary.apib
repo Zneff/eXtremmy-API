@@ -83,28 +83,6 @@ GET /spots/events/{id}/{?from,till,limit}
     }
 ]
 
-POST /spots/
-> Content-Type: application/json
-> Accept: application/json
-{ 
-    "name": "My new point", 
-    "coordinate": [55.990154,37.409945],
-    "url": "http://www.extremmy.com",
-    "sports": ["skydiving"],
-    "rating": 3
-}
-< 401
-< Content-Type: application/json
-{ 
-    "error": 401,
-    "message": "Unauthorized user trying to add spot.",
-    "userMessage": "Please sign in."   
-}
-+++++
-< 200
-< Content-Type: application/json
-{ "ID": 42 }
-
 Add spot. Parameters:
 
 + <b>name</b> - spot name, required
@@ -118,6 +96,7 @@ Add spot. Parameters:
 + <b>[has_lessons]</b> - if spot has lessons service, bool
 + <b>[address]</b> - adress (from geolocation)
 + <b>[country]</b> - country (from geolocation)
++ <b>[rating]</b> - rating, 1 to 5
 POST /spots/add
 > Authorization: apikey:XXX
 > Content-Type: application/json
